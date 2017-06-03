@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Attendance Manager</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="gotoEventList()">
+           <ion-icon name="calendar"></ion-icon>
+       </button>
+    </ion-buttons>  
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="startForm">
+  <ion-list inset nolines>
+    <ion-item>
+      <ion-input placeholder="Service Title" [(ngModel)]="event.title"></ion-input>
+    </ion-item>
+   </ion-list>
+   <ion-list inset nolines>
+    <ion-item>
+      <ion-input placeholder="Venue" [(ngModel)]="event.venue"></ion-input>
+    </ion-item>
+   </ion-list>
+  <ion-list inset nolines>
+     <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.timeEnds"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  </div>
+  <ion-fab middle center>
+    <button ion-fab color="primary" (click)="addEvent(event)"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>        
+      
+</ion-content>

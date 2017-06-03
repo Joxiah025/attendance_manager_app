@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Service List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="searchService($event)" placeholder="Type Service Title"></ion-searchbar>
+    
+    <ion-list *ngIf="service">
+      <button ion-item *ngFor="let item of service" (click) = "gotoAttendance(item.id, item.name)">
+         
+             <h2 class="serviceTitle"> {{ item.name }} </h2>
+              
+            <ion-note end> <ion-icon name="pin"></ion-icon> {{item.location}} </ion-note>
+          <ion-note item-right>{{item.date_time}}</ion-note>
+      </button>
+   </ion-list>
+
+   
+
+   <ion-spinner name="crescent" class="indicator" *ngIf="!service"></ion-spinner>
+
+   <ion-fab bottom center>
+    <button ion-fab color="love" (click)="reConnect()"><ion-icon name="refresh"></ion-icon></button>
+  </ion-fab> 
+    <!--<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>-->
+
+</ion-content>

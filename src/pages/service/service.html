@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Service List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="getService($event)"></ion-searchbar>
+    
+    <ion-list>
+       <button ion-item *ngFor="let item of service" (click) = "gotoService(item.id)">
+         <ion-note item-end>{{item.date}}</ion-note>
+    
+      <h2> {{ item.service }} </h2>
+      <p> <ion-icon name="pin"></ion-icon> {{item.venue}} </p>
+    </button>
+    </ion-list>
+    
+</ion-content>
