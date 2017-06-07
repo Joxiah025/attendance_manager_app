@@ -27,7 +27,16 @@ export class AttendancePage {
        this.attendance = this.search = resp.data;
           console.log(resp.data);
        
-     });
+     },
+     (error) => {
+          let toast = this.toastCtrl.create({
+            message: 'Oops! check your internet connection.',
+            duration: 3000,
+            position: 'top'
+          });
+          toast.present();
+    }
+     );
   }
 
 
@@ -39,13 +48,14 @@ export class AttendancePage {
     var val = ev.target.value;
 
     // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
+    if (val) {
       console.log(val);
-      this.attendance = this.search.filter((item) => {
+      this.attendance = this.attendance.filter((item) => {
         return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }else{
-       this.initializeAttendance();
+       //this.initializeAttendance();
+       this.attendance = this.search;
     }
 
   }
@@ -130,8 +140,12 @@ export class AttendancePage {
   }
 
 addFirst(){
-    let modal = this.modalCtrl.create(MemberPage);
+    let modal = this.modalCtrl.create(MemberPage, { id: this.servid });
     modal.present();
+    modal.onDidDismiss(() => {
+        this.initializeAttendance();
+    })
+    
 }
 
 }

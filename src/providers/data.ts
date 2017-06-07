@@ -30,10 +30,14 @@ export class Data {
     return this.storage.get('services');
   }
 
-  saveService(data){
+  saveFt(data){
     //let newData = JSON.stringify(data);
-    this.storage.set('services', data);
-    return this.getData();
+    var url = 'http://beta.blwchurchlive.com/includes/saveft.php';
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(url, data, options)
+    .map(res => {return res.json()})
   }
 
 

@@ -1,7 +1,14 @@
 page-event {
     
 }
-
+.event{
+    padding-top:10px;
+    padding-bottom:10px;
+}
+.img{
+    height: 60px !important;
+    width: 60px !important;
+}
 .startForm {
    padding-top: 40px;
 }
@@ -11,8 +18,8 @@ page-event {
 }
 
 .indicator{
-    margin-top:50%;
-    margin-left:45%;
+    margin-top:150px;
+    margin-left:50%;
 }
 
 ion-spinner {

@@ -1,35 +1,76 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>Add A First Timer</ion-title>
+    
     <ion-buttons start>
-      <button ion-button icon-only (click)="dismiss()">
+       <button ion-button icon-only (click)="dismiss()">
            <ion-icon name="close"></ion-icon>
+       </button>
+        <button ion-button icon-only (click)="saveInput(myForm.value)">
+           <ion-icon name="checkmark"></ion-icon>
        </button>
     </ion-buttons> 
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-
-  <ion-list inset nolines>
+  <form [formGroup]="myForm" (ngSubmit)="saveInput(myForm.value)">
+  
+  
+<ion-list inset nolines>
     <ion-item>
-      <ion-input placeholder="Service Title" [(ngModel)]="title"></ion-input>
+      <ion-input placeholder="Firstname *" name="fname" formControlName="fname"></ion-input>
     </ion-item>
    </ion-list>
    <ion-list inset nolines>
     <ion-item>
-      <ion-input placeholder="Venue" [(ngModel)]="venue"></ion-input>
+      <ion-input placeholder="Lastname *" name="lname" formControlName="lname"></ion-input>
+    </ion-item>
+   </ion-list>
+   <ion-list inset nolines>
+    <ion-item>
+      <ion-input type="tel" placeholder="Phone number *" name="phone" formControlName="phone"></ion-input>
+    </ion-item>
+   </ion-list>
+   <ion-list inset nolines>
+    <ion-item>
+      <ion-input type="email" placeholder="Email address" name="email" formControlName="email"></ion-input>
+    </ion-item>
+   </ion-list>
+   <ion-list inset nolines>
+    <ion-item>
+      <ion-input placeholder="Cell group" name="cell" formControlName="cell"></ion-input>
     </ion-item>
    </ion-list>
   <ion-list inset nolines>
-     <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="timeEnds"></ion-datetime>
+    <ion-item>
+      <ion-input placeholder="Hostel Address" name="address" formControlName="address"></ion-input>
     </ion-item>
-  </ion-list>
+   </ion-list>
+   <ion-list inset nolines>
+    <ion-item>
+      <ion-input placeholder="Course of Study" name="course" formControlName="course"></ion-input>
+    </ion-item>
+   </ion-list>
+   <ion-list inset nolines>
+    <ion-item>
+      <ion-input placeholder="Level" name="level" formControlName="level"></ion-input>
+    </ion-item>
+   </ion-list>
+   <ion-list inset nolines>
+      <ion-item>
+        <ion-label>Sex *</ion-label>
+        <ion-select name="sex" formControlName="sex">
+          <ion-option value='1'>Male</ion-option>
+          <ion-option value='0'>Female</ion-option>
+        </ion-select>
+      </ion-item>    
+     </ion-list>
+</form>
   
-  <ion-fab middle center>
+  
+  <!--<ion-fab middle center>
     <button ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
-  </ion-fab>   
+  </ion-fab>  -->
 
 </ion-content>

@@ -1,4 +1,4 @@
-page-event {
+page-member {
     
 }
 
@@ -8,4 +8,12 @@ page-event {
 
 .serviceTitle{
     color: #757474;
+}
+
+.input-has-value{
+    border-bottom-color: none !important;
+    box-shadow: none !important;
+}
+.invalid {
+    border: 1px solid #f2f2f2;
 }

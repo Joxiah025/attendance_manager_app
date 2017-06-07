@@ -1,31 +1,30 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Service List</ion-title>
+    <ion-title>Attendance Manager</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-searchbar (ionInput)="searchService($event)" placeholder="Type Service Title"></ion-searchbar>
+  <!--<ion-searchbar (ionInput)="searchService($event)" placeholder="Type Service Title"></ion-searchbar>-->
     
-    <ion-list *ngIf="service">
-      <button ion-item *ngFor="let item of service" (click) = "gotoAttendance(item.id, item.name)">
-         
-             <h2 class="serviceTitle"> {{ item.name }} </h2>
-              
-            <ion-note end> <ion-icon name="pin"></ion-icon> {{item.location}} </ion-note>
-          <ion-note item-right>{{item.date_time}}</ion-note>
+    <ion-list no-lines *ngIf="service && !noservice">
+      <!--<ion-list-header>Service</ion-list-header>-->
+      <ion-item-divider color="light">Today's Service</ion-item-divider>
+      <button class="event" ion-item (click) = "gotoAttendance(service.id, service.name)">
+          <ion-avatar item-start>
+            <img src="assets/img/cal.png" class="img">
+          </ion-avatar>
+             <h2 class="serviceTitle"> {{ service.name }} </h2>
+             <p><ion-icon name="pin"></ion-icon> {{service.location}} </p>
+             <p><ion-icon name="calendar"></ion-icon> {{service.date_time}} </p>
       </button>
-   </ion-list>
+    </ion-list>
 
-   
+   <img src="assets/img/cal.png" *ngIf="noservice">
 
-   <ion-spinner name="crescent" class="indicator" *ngIf="!service"></ion-spinner>
+   <ion-spinner name="crescent" class="indicator" *ngIf="!service && !noservice"></ion-spinner>
 
    <ion-fab bottom center>
-    <button ion-fab color="love" (click)="reConnect()"><ion-icon name="refresh"></ion-icon></button>
+    <button ion-fab color="fray" (click)="reConnect()"><ion-icon name="refresh"></ion-icon></button>
   </ion-fab> 
-    <!--<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-      <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>-->
-
-</ion-content>
+ </ion-content>

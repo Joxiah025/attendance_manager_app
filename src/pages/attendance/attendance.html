@@ -3,15 +3,20 @@
     <ion-title>
       {{title}}
     </ion-title>
+    <ion-buttons start>
+       <button ion-button icon-only (click)="addFirst()">
+         <ion-icon name="person-add"></ion-icon>
+       </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-searchbar (ionInput)="getAttendance($event)" placeholder="Search Name"></ion-searchbar>
     
-  <ion-list *ngIf="attendance">
-    <!--<ion-list-header>Member List</ion-list-header>-->
-    
+  <ion-list *ngIf="attendance" no-lines>
+    <ion-list-header>Members </ion-list-header>
+      
     <button ion-item  *ngFor="let item of attendance">
       <ion-avatar item-start>
         <img src="assets/img/male.png" *ngIf = "item.sex == 1">
@@ -20,15 +25,14 @@
       <ion-label>
         <h2>{{ item.name }}</h2>
       </ion-label>
-       <button *ngIf="item.present == true" ion-button clear large item-right color="secondary" (click)="absent(item)"><ion-icon name="checkmark-circle"></ion-icon></button>
-       <button *ngIf="item.present == false" ion-button clear large item-right color="love" (click)="present(item)"><ion-icon name="close-circle"></ion-icon></button>
+       <button *ngIf="item.present == true" ion-button clear large item-right color="primary" (click)="absent(item)"><ion-icon name="checkmark-circle"></ion-icon></button>
+       <button *ngIf="item.present == false" ion-button clear large item-right color="fray" (click)="present(item)"><ion-icon name="checkmark-circle"></ion-icon></button>
       
     </button>
+   
   </ion-list>
 
   <ion-spinner name="crescent" class="indicator" *ngIf="!attendance"></ion-spinner>
 
-  <ion-fab bottom right>
-    <button ion-fab color="danger" (click)="addFirst()"><ion-icon name="person-add"></ion-icon></button>
-  </ion-fab> 
+  
 </ion-content>
